@@ -53,26 +53,3 @@ function searchData(e) {
   });
 }
 
-
-// {
-//   "sessionId": "TsVYymyYvhdz3wYPB-6D-6ARrtGvCG3o",
-//   "userDetails": {
-//     "avatarUrl": "https://d1br04p5jdm344.cloudfront.net/avatar.tlx/7lpNTm37l7CI07lLNZ7lp0FMU.png",
-//     "backingFolderId": "13cc2d38-79fe-4075-85a5-6071e1532955",
-//     "createdDate": {
-//       "rfc3339": "2019-07-25T15:40:39+00:00",
-//       "timestamp": "412012500"
-//     },
-//     "description": "Head of Marketing",
-//     "email": "joanna.bloggs@example.com",
-//     "hideHomeSpaceShortcut": true,
-//     "homeSpaceId": "13cc2d38-79fe-4075-85a5-6071e1532955",
-//     "id": "13cc2d38-79fe-4075-85a5-6071e1532955",
-//     "modifiedDate": {
-//       "rfc3339": "2019-07-25T15:40:39+00:00",
-//       "timestamp": "412012500"
-//     },
-//     "name": "Joanna Bloggs",
-//     "username": "mychorususer"
-//   }
-// }
