@@ -85,10 +85,10 @@ function iterateFirstTwentyElements() {
 
 
 function assignmentOfId() {
-  let items = ""
+  let itemsID = ""
   let searchedId = {
     itemIds: [
-      items
+      itemsID
     ]
   }
   fetch(multiSearchEnd, {
