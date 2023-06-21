@@ -80,17 +80,26 @@ function iterateFirstTwentyElements() {
   for (var i = 0; i < currentSearchIdFields.length && i < 20; i++) {
     returnedSearchID.push(currentSearchIdFields[i]);
   }
-  // assignmentOfId();
+  console.log(currentSearchIdFields)
+  pushingIdToKeyPair()
 }
 
 
-function assignmentOfId() {
+// Loop over 
+function pushingIdToKeyPair(currentSearchIdFields) {
   let itemsID = ""
   let searchedId = {
     itemIds: [
-      itemsID
+      ""
     ]
   }
+
+}
+
+
+
+function assignmentOfId() {
+ 
   fetch(multiSearchEnd, {
     method: "POST",
     headers: {
