@@ -1,0 +1,22 @@
+body {
+    background-color: grey;
+}
+
+.form_class {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 80%;
+    gap: 1rem;
+}
+
+.outer-search__container {
+    display: flex;
+    justify-content: center;
+}
+
+.label-search {
+    text-align: center;
+    font-size: 2rem;
+    margin: 20px;
+}

@@ -35,7 +35,8 @@ function searchData(e) {
   e.preventDefault();
   let query = document.getElementById("query_field").value;
   console.log(query)
-  
+  const searchURL = searchEnd + new URLSearchParams(query)
+  console.log(searchURL)
   fetch(searchEnd + new URLSearchParams(query), {
     method: "GET",
     headers: {
