@@ -13,10 +13,43 @@ body {
 .outer-search__container {
     display: flex;
     justify-content: center;
+    flex-direction: column;
+    align-items: center;
 }
 
 .label-search {
     text-align: center;
     font-size: 2rem;
     margin: 20px;
+}
+
+.loader {
+    border: 3px solid #f3f3f3;
+    margin-top: 2rem;
+    border-radius: 50%;
+    border-top: 3px solid #ff0000;
+    width: 1rem;
+    height: 1rem;
+    -webkit-animation: spin 2s linear infinite; /* Safari */
+    animation: spin 2s linear infinite;
+  }
+  
+  /* Safari */
+  @-webkit-keyframes spin {
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+.display-none {
+    display: none;
+}
+
+.rendered_images {
+    width: 20%;
+    height: 20%;
 }

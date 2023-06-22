@@ -13,11 +13,12 @@ const multiSearch = "/rest/v1/content/multi"
 const authenticate = apiUrl + authentication;
 const searchEnd = apiUrl + searchPoint;
 const multiSearchEnd = apiUrl + multiSearch
-
 // Current Session GLOBAL variables
 let currentSessionId = "";
 let currentSearchIdFields = "";
 let returnedSearchID = [];
+let returnedIdsAndURLS = "";
+let imageurls = []
 
 fetch(authenticate, {
   method: "POST",
@@ -40,9 +41,11 @@ fetch(authenticate, {
 document.getElementById('submit-button').addEventListener("click", searchData);
 
 
-
 function searchData(e) {
   e.preventDefault();
+  let loadbar = document.getElementById('current-status');
+  loadbar.classList.remove("display-none")
+  
   let query = document.getElementById("query_field").value;
   console.log(query)
   
@@ -57,10 +60,12 @@ function searchData(e) {
       "X-Chorus-Session": currentSessionId
     },
   })
-    .then(response => response.json())
-    .then(data => {
+  .then(response => response.json())
+  .then(data => {
+      loadbar.classList.add("display-none")
       // Passing data to response if the length is not greater than 1 it throws a error and a user message
       if (data.response.length >= 1) {
+
         currentSearchIdFields = data.response;
         iterateFirstTwentyElements();
       } else {
@@ -76,29 +81,28 @@ function searchData(e) {
 
 
 function iterateFirstTwentyElements() {
+  var searchedId = {
+    itemIds: []
+  };
 
   for (var i = 0; i < currentSearchIdFields.length && i < 20; i++) {
-    returnedSearchID.push(currentSearchIdFields[i]);
+    searchedId.itemIds.push(currentSearchIdFields[i]);
   }
-  console.log(currentSearchIdFields)
-  pushingIdToKeyPair()
+
+  pushingIdToKeyPair(searchedId)
 }
+
 
 
 // Loop over 
-function pushingIdToKeyPair(currentSearchIdFields) {
-  let itemsID = ""
-  let searchedId = {
-    itemIds: [
-      ""
-    ]
-  }
-
+function pushingIdToKeyPair(searchedId) {
+  console.log(searchedId)
+  console.log(searchedId.itemIds)
+  assignmentOfId(searchedId)
 }
 
 
-
-function assignmentOfId() {
+function assignmentOfId(searchedId) {
  
   fetch(multiSearchEnd, {
     method: "POST",
@@ -110,7 +114,8 @@ function assignmentOfId() {
   })
     .then(response => response.json())
     .then(data => {
-
+      returnedIdsAndURLS = data
+      gettingThumbNails();
   })
   .catch(error => {
       console.error("Error:", error);
@@ -118,4 +123,21 @@ function assignmentOfId() {
 
 }
 
+function gettingThumbNails() {
+  console.log(returnedIdsAndURLS)
+  console.log(returnedIdsAndURLS.response)
+  for (var i = 0; i < returnedIdsAndURLS.response.length; i++) {
+    let urls = returnedIdsAndURLS.response[i].details.file.thumbnails.large.url
+    imageurls.push(urls)
+    console.log(imageurls)
+    renderingImages();
+  }
+}
 
+function renderingImages() {
+  let container = document.getElementById("image-container");
+  for (let i = 0; i < imageurls.length; i++) {
+    let html = `<img class="rendered_images" src=${imageurls[i]}>`
+    container.innerHTML += html;
+  }
+}
